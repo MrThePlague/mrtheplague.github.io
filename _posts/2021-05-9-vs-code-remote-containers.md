@@ -99,10 +99,14 @@ Now that we've added the configuration settings, you'll see that VS Code created
 
 #### 4. Start the Development Environment
 
-To start the environment, we can now open our workspace within the container itself, which will cause the VS Code window to reload. This process does a few things for us, such as:
+We're now ready to launch our development environment and open our workspace within the container itself. To do this we can select **Remote Containers: Reopen in Container** from the command palette (⌘-⇧-P). This will cause the VS Code window to reload, and launch the container instance.
 
-1. Building our Docker image by pulling the base image from the Microsoft Container Registry
-2. Instantiating our container
+![Opening a folder in a remote container](/assets/img/remote-container-reopen.png){: .mx-auto.d-block :}
+
+This process automates a few steps for us, such as:
+
+1. Building our Docker image from the `Dockerfile`, which includes pulling the base image from the Microsoft Container Registry
+2. Instantiating our container instance
 3. Mapping our project folder _into_ the container
 4. Installing our desired extensions within the container
 
@@ -131,6 +135,12 @@ From my local machine, executing `python --verison` returns `Python 2.7.16`, bec
 <div class="box-note">
     <strong>A Note About Git: </strong>If you're planning on using Git from within the remote container environment, and you use SSH keys to authenticate your repo, you'll have share your keys <em>into</em> the container. You can do this easily from your local machine's terminal by running the command <code>ssh-add</code>. For more info on the <code>ssh-add</code> command, see <a href="https://www.ssh.com/academy/ssh/add">here</a>.
 </div>
+
+#### 6. Customise Extensions
+
+Once our development environment is up and running, we can install any of our language-specific extensions into the development environment itself, by following the normal installation process (⌘-⇧-X). When the extensions are installed, they will be added to your `devcontainer.json` file, which ensures that they're present every time you launch this environment. 
+
+This is great if you work on multiple different computers, and you'd like to version control the development environment _with_ your project, or if you are working on a team and you want to ensure that new contributors have a set of baseline extensions installed by default.
 
 ### Possibilities
 
